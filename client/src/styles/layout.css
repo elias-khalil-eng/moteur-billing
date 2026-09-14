@@ -1,0 +1,162 @@
+/* Application shell: bottom navigation on a phone, a sidebar from the tablet
+   breakpoint up. One breakpoint, shared with the useIsMobile hook. */
+
+.shell {
+  min-block-size: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.shell__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-block-end: 1px solid var(--color-border);
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 10;
+}
+
+.shell__eyebrow {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.shell__title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+}
+
+.shell__header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.shell__main {
+  padding: var(--space-4);
+  padding-block-end: calc(var(--bottom-nav-height) + var(--space-5));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.bottom-nav {
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline: 0;
+  block-size: var(--bottom-nav-height);
+  display: flex;
+  background: var(--color-surface);
+  border-block-start: 1px solid var(--color-border);
+  padding-block-end: env(safe-area-inset-bottom);
+  z-index: 10;
+}
+
+.bottom-nav__item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.bottom-nav__item.active {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.login {
+  min-block-size: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-4);
+  max-inline-size: 26rem;
+  margin-inline: auto;
+}
+
+.login__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.login__header h1 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+}
+
+.login__form h2 {
+  margin-block-start: 0;
+}
+
+.login__switch {
+  display: block;
+  margin-block-start: var(--space-4);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 48rem) {
+  .shell {
+    grid-template-columns: 15rem 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .shell__header {
+    grid-column: 1 / -1;
+  }
+
+  .shell__main {
+    grid-column: 2;
+    padding-block-end: var(--space-5);
+    max-inline-size: 60rem;
+  }
+
+  .bottom-nav {
+    position: sticky;
+    inset-block-start: 0;
+    grid-column: 1;
+    grid-row: 2;
+    block-size: auto;
+    flex-direction: column;
+    align-items: stretch;
+    border-block-start: none;
+    border-inline-end: 1px solid var(--color-border);
+    padding-block: var(--space-3);
+  }
+
+  .bottom-nav__item {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* Bottom-bar labels must stay readable in Arabic, which is wider than English. */
+.bottom-nav__item {
+  padding-inline: var(--space-1);
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 48rem) {
+  .bottom-nav__item {
+    font-size: var(--font-size-base);
+    text-align: start;
+  }
+}

@@ -1,0 +1,39 @@
+:root {
+  color-scheme: light;
+
+  --color-bg: #f6f7f9;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #eef1f5;
+  --color-border: #d8dee7;
+  --color-text: #10141c;
+  --color-text-muted: #5c6779;
+  --color-accent: #0d6efd;
+  --color-accent-contrast: #ffffff;
+  --color-positive: #0f7b45;
+  --color-warning: #a35b00;
+  --color-danger: #b3261e;
+  --color-danger-surface: #fdecea;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+
+  --font-body: system-ui, "Segoe UI", Tahoma, "Noto Naskh Arabic", sans-serif;
+  --font-size-sm: 0.8125rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+  --font-size-hero: 2.5rem;
+
+  --shadow-card: 0 1px 2px rgb(16 20 28 / 8%), 0 4px 12px rgb(16 20 28 / 6%);
+
+  --bottom-nav-height: 3.75rem;
+  --breakpoint-mobile: 48rem;
+}
