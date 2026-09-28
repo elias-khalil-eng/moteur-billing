@@ -1,4 +1,5 @@
 # Moteur billing
+n[![CI](https://github.com/elias-khalil-eng/moteur-billing/actions/workflows/ci.yml/badge.svg)](https://github.com/elias-khalil-eng/moteur-billing/actions/workflows/ci.yml)
 
 A billing system for a single neighbourhood generator in Lebanon. Metered billing,
 priced in USD and paid in cash in either currency, run from a phone.
@@ -12,6 +13,15 @@ priced in USD and paid in cash in either currency, run from a phone.
   used so far this cycle, priced at today's rate and labelled an estimate, not a bill.
 
 Arabic is the default interface language, right to left, with an English toggle.
+
+<img src="docs/img/login.jpg" alt="Subscriber sign-in screen, Arabic, right to left" width="300">
+
+## Tech Stack
+
+- React 19 + Vite client, TypeScript strict on both sides
+- One Netlify function for the API, PostgreSQL through `pg`
+- JWT auth, bcrypt, Web Push notifications
+- Vitest unit and integration suites against a real Postgres, Playwright smoke flows, oxlint
 
 ## Shape
 
