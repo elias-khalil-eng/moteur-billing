@@ -1,5 +1,6 @@
 # Moteur billing
-n[![CI](https://github.com/elias-khalil-eng/moteur-billing/actions/workflows/ci.yml/badge.svg)](https://github.com/elias-khalil-eng/moteur-billing/actions/workflows/ci.yml)
+
+[![CI](https://github.com/elias-khalil-eng/moteur-billing/actions/workflows/ci.yml/badge.svg)](https://github.com/elias-khalil-eng/moteur-billing/actions/workflows/ci.yml)
 
 A billing system for a single neighbourhood generator in Lebanon. Metered billing,
 priced in USD and paid in cash in either currency, run from a phone.
