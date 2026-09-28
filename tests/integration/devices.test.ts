@@ -151,7 +151,8 @@ describe('a device reporting a reading', () => {
 
   it('takes a retry of the same instant without doubling the row', async () => {
     const created = await register();
-    const at = '2026-09-10T09:00:00.000Z';
+    // Relative to now: ingest rejects readings older than seven days
+    const at = new Date(Date.now() - 60 * 60 * 1_000).toISOString();
     expect((await report(SERIAL, created.secret, 10_432, at)).status).toBe(202);
     expect((await report(SERIAL, created.secret, 10_432, at)).status).toBe(202);
 
