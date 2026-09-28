@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: moteur
+          POSTGRES_PASSWORD: moteur
+          POSTGRES_DB: moteur_test
+        ports:
+          - 55432:5432
+        options: >-
+          --health-cmd "pg_isready -U moteur"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      # Throwaway values for the CI database only
+      DATABASE_URL: postgres://moteur:moteur@localhost:55432/moteur_test
+      JWT_SECRET: ci-only-secret-not-used-anywhere-else
+      APP_TIMEZONE: Asia/Beirut
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            client/package-lock.json
+      - run: npm ci
+      - run: npm --prefix client ci
+      - run: npm run lint
+      - run: npm run migrate
+      - run: npm test
+      - run: npm run build
